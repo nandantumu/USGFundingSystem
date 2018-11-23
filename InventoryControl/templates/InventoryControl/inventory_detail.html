@@ -1,0 +1,36 @@
+{% extends 'InventoryControl/base.html' %}
+{% block invcurrent %} active {% endblock invcurrent %}
+{% block content %}
+    <div class="container mt-3">
+        <h1>{{ item.organization.org_name }}</h1>
+        <h2>{{ item.item_name }}</h2>
+        <table class="table mt-3">
+            <tbody>
+                <tr>
+                    <th>Item Value</th>
+                    <td>{{ item.item_value }}</td>
+                </tr>
+                <tr>
+                    <th>Purchase Date</th>
+                    <td>{{ item.purchase_date }}</td>
+                </tr>
+                <tr>
+                    <th>Estimated Life</th>
+                    <td>{{ item.estimated_life }}</td>
+                </tr>
+                <tr>
+                    <th>Storage Location</th>
+                    <td>{{ item.storage_location }}</td>
+                </tr>
+                <tr>
+                    <th>Delivery Date</th>
+                    <td>{{ item.delivery_date }}</td>
+                </tr>
+                <tr>
+                    <th>Organization</th>
+                    <td>{{ item.organization }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

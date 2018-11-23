@@ -1,0 +1,12 @@
+{% extends 'InventoryControl/base.html' %}
+{% block invcurrent %} active {% endblock invcurrent %}
+{% block content %}
+    <div class="container mt-3">
+        <h1>All Inventory</h1>
+        <ul class="list-group">
+            {% for item in inv_list %}
+            <a class="list-group-item list-group-item-action" href={% url 'Inventory Detail' item.id %}> {{item.item_name}} </a>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}

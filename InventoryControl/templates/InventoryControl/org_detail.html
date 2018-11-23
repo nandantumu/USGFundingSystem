@@ -1,0 +1,49 @@
+{% extends 'InventoryControl/base.html' %}
+{% block orgcurrent %} active {% endblock orgcurrent %}
+{% block content %}
+    <div class="container mt-3">
+        <h1>{{ org.org_name }}</h1>
+        {% for sanction in sanction_list %}
+            <div class="alert alert-danger" role="alert">
+                {{ sanction.sanction_type }} | Imposed {{ sanction.application_date }} for {{ sanction.sanction_duration }}
+            </div>
+        {% endfor %}
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Organization Mission</th>
+                    <td>{{ org.org_mission }}</td>
+                </tr>
+                <tr>
+                    <th>Organization Creation Date</th>
+                    <td>{{ org.org_created }}</td>
+                </tr>
+                <tr>
+                    <th>Has Informational Budget been submitted?</th>
+                    <td>{{ org.info_budget }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>Inventory Owned</h4>
+        <table class="table">
+            <thead class="table-secondary">
+                <tr>
+                    <th>Purchase Date</th>
+                    <th>Item Value</th>
+                    <th>Item Name</th>
+                    <th>Link to Item</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in inventory_list %}
+                    <tr>
+                        <td>{{ record.purchase_date }}</td>
+                        <td>$ {{ record.item_value|floatformat:2 }}</td>
+                        <td>{{ record.item_name }}</td>
+                        <td><a type="button" class="btn btn-outline-dark" href={% url 'Inventory Detail' record.id %}>Item</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}
