@@ -41,12 +41,12 @@ class Migration(migrations.Migration):
                 ('sanction_duration', models.DurationField()),
                 ('sanction_type', models.CharField(max_length=1500)),
                 ('offense_description', models.CharField(max_length=10000)),
-                ('organization', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='InventoryControl.Organization')),
+                ('organization', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Pantomath.Organization')),
             ],
         ),
         migrations.AddField(
             model_name='inventoryitem',
             name='organization',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='InventoryControl.Organization'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Pantomath.Organization'),
         ),
     ]

@@ -8,23 +8,23 @@ from django.views import generic
 
 def index(request):
     org_list = Organization.objects.all()
-    return render(request, 'InventoryControl/all_orgs.html', {'org_list': org_list})
+    return render(request, 'Pantomath/all_orgs.html', {'org_list': org_list})
 
 
 def org_detail(request, org_id):
     org = get_object_or_404(Organization, pk=org_id)
     sanction_list = Sanction.objects.all().filter(organization__exact=org_id)
     inv_list = InventoryItem.objects.all().filter(organization__exact=org_id)
-    return render(request, 'InventoryControl/org_detail.html', {'org': org,
+    return render(request, 'Pantomath/org_detail.html', {'org': org,
                                                                 'sanction_list': sanction_list,
                                                                 'inventory_list': inv_list})
 
 
 def inventory(request):
     inventory_list = InventoryItem.objects.all()
-    return render(request, 'InventoryControl/all_inventory.html', {'inv_list': inventory_list})
+    return render(request, 'Pantomath/all_inventory.html', {'inv_list': inventory_list})
 
 
 def inv_detail(request, inv_id):
     inv_item = get_object_or_404(InventoryItem, pk=inv_id)
-    return render(request, 'InventoryControl/inventory_detail.html', {'item': inv_item})
+    return render(request, 'Pantomath/inventory_detail.html', {'item': inv_item})
